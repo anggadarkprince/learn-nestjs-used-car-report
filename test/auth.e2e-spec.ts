@@ -31,7 +31,7 @@ describe('Authentication system', () => {
             });
     });
 
-    it('sign up as new user then get the currently logged in user', () => {
+    it('sign up as new user then get the currently logged in user', async () => {
         const email = 'angga@mail.com';
         const response = request(app.getHttpServer())
             .post('/auth/signup')
