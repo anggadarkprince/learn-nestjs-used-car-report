@@ -1,0 +1,28 @@
+import {IsLatitude, IsLongitude, IsString, Max, Min} from "class-validator";
+import {Transform} from "class-transformer";
+
+export class GetEstimateDto {
+    @IsString()
+    make: string;
+
+    @IsString()
+    model: string;
+
+    @Transform(({value}) => parseInt(value))
+    @Min(1970)
+    @Max(2050)
+    year: number;
+
+    @Transform(({value}) => parseFloat(value))
+    @IsLongitude()
+    lng: number;
+
+    @Transform(({value}) => parseFloat(value))
+    @IsLatitude()
+    lat: number;
+
+    @Transform(({value}) => parseInt(value))
+    @Min(0)
+    @Max(1000000)
+    mileage: number;
+}
